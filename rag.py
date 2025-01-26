@@ -1,4 +1,6 @@
-import typer
+import os
+from dotenv import load_dotenv
+
 from typing import Optional
 from rich.prompt import Prompt
 
@@ -6,6 +8,9 @@ from phi.agent import Agent
 from phi.knowledge.pdf import PDFKnowledgeBase, PDFReader
 from phi.vectordb.lancedb import LanceDb
 from phi.vectordb.search import SearchType
+
+load_dotenv()
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # LanceDB Vector DB
 vector_db = LanceDb(

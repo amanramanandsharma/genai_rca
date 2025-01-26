@@ -55,7 +55,7 @@ def manager_agent(user: str = "user"):
         team=[sql_agent, knowledge_agent],
         instructions=[
             "Use tables to display data and then summarize the data in one sentence. Always show the SQL query generated",
-            "Always include sources",
+            "Always include sources & references",
         ],
         show_tool_calls=True,
         markdown=True,
