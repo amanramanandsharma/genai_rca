@@ -29,12 +29,13 @@ knowledge_agent = Agent(
     name="Breach Knowledge Agent",
     role="Gets all the Breach related knowledge from internal Documents",
     model=OpenAIChat(id="gpt-4o"),
-    instructions=["Always include sources"],
+    instructions=["Always get information from internal documents only. Always include sources & references"],
     show_tool_calls=True,
     markdown=True,
     search_knowledge=True,
     knowledge_base=get_rag_knowledge(),
     use_tools=True,
+    reasoning=True
 )
 
 # agent_team = Agent(
@@ -55,7 +56,7 @@ def manager_agent(user: str = "user"):
         team=[sql_agent, knowledge_agent],
         instructions=[
             "Use tables to display data and then summarize the data in one sentence. Always show the SQL query generated",
-            "Always include sources & references",
+            "Always get information from internal documents only. Always include sources & references",
         ],
         show_tool_calls=True,
         markdown=True,
